@@ -8,3 +8,8 @@ attach shell:
         npm install
         --npm suggests you run: npm run dev 
         --but dont do it. See at Dockerfile CMD [npm run dev -- --host 0000]
+
+
+Then you can use:  
+        cd /var/www/vue-vite/vvd
+        npx vite --help 
