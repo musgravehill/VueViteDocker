@@ -1,0 +1,10 @@
+
+docker compose up
+attach shell:
+        npm create vite@latest
+        --select what you need
+        --then
+        cd *your project folder*
+        npm install
+        --npm suggests you run: npm run dev 
+        --but dont do it. See at Dockerfile CMD [npm run dev -- --host 0000]
