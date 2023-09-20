@@ -1,5 +1,8 @@
 
-docker compose up
+in docker/node/Dockerfile disable run npm:
+# CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
+
+docker compose up 
 attach shell:
         npm create vite@latest
         --select what you need
@@ -9,11 +12,17 @@ attach shell:
         --npm suggests you run: npm run dev 
         --but dont do it. See at Dockerfile CMD [npm run dev -- --host 0000]
 
+in docker/node/Dockerfile ENABLE run npm:
+CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
 
 Then you can use:  
-        cd /var/www/vue-vite/vvd
+        cd /var/www/vvd-vite
         npx vite --help 
         npx vite build  
 
-http://localhost:5173  - see reactive live site        
+       
 npx vite build - build ready-site and place html\css\js into "dist" folder. 
+
+http://vvd.ru/ - build ready-site and place html\css\js into "dist" folder. 
+http://vite.vvd.ru/ - see reactive live site 
+http://localhost:5173  - see reactive live site 

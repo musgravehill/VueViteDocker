@@ -10,7 +10,7 @@ ARG ARG_WORKDIR
 
 # ENV available always. I get .env in docker-compose.yml, then pass data in build: args:
 # there is no way to pass ENVs to Dockerfile from outer sources? 
-ENV ENV_WORKDIR=${ARG_WORKDIR}  
+ENV ENV_VITE_WORKDIR=${ARG_WORKDIR}  
 
 
 
@@ -20,9 +20,9 @@ ENV ENV_WORKDIR=${ARG_WORKDIR}
 # CMD — аргументы по умолчанию для ENTRYPOINT
 # ENTRYPOINT — команда по умолчанию, которая будет выполнена при запуске контейнера
 
-WORKDIR ${ENV_WORKDIR}
+WORKDIR ${ENV_VITE_WORKDIR}
 
-#RUN echo ${ENV_WORKDIR}  #thisIsDebug
+#RUN echo ${ENV_VITE_WORKDIR}  #thisIsDebug
 
 # CMD ["sh", "-c", "npm install && npm run dev -- --host"]
 CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
