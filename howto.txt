@@ -13,3 +13,7 @@ attach shell:
 Then you can use:  
         cd /var/www/vue-vite/vvd
         npx vite --help 
+        npx vite build  
+
+http://localhost:5173  - see reactive live site        
+npx vite build - build ready-site and place html\css\js into "dist" folder. 
