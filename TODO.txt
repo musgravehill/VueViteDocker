@@ -25,3 +25,16 @@ export default defineConfig({
 ================nginx=====================
 add nginx after node
 If node is ok => add nginx 
+
+web:
+    container_name: xweb
+    image: nginx:1.23-alpine
+    ports:
+      - "80:80"      
+    volumes:
+      - .:/var/www:rw      
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    entrypoint: ["nginx-debug", "-g", "daemon off;"]
+    networks:
+      - vue-vite-network
+      

@@ -3,14 +3,19 @@ services:
   vue-vite-node:  #feel free to use: docker compose logs node
     container_name: vue-vite-node
     image: vue-vite-node
+    env_file: # .env file should be used only for variables that the yaml parser needs
+      - ./docker/node/.env
     build:  
       context: .
-      dockerfile: ./docker/node/Dockerfile    
-    working_dir: /var/www/vue-vite   
+      dockerfile: ./docker/node/Dockerfile 
+      args:        
+        - ARG_WORKDIR=${ENV_WORKDIR}   
+        - ARG_USER=${ENV_USER}
+    #working_dir: ${ENV_WORKDIR}  in node/Dockerfile?
     ports:
       - "5173:5173" #8000?   
     volumes:
-      - .:/var/www/vue-vite
+      - .:/var/www/vue-vite:rw
     tty: true #pseudo-terminal
     networks:
       - vue-vite-network
