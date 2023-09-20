@@ -1,8 +1,8 @@
 version: "3.4"
 services:
-  vue-vite-front:
-    container_name: vue-vite-front
-    image: vue-vite-front
+  vue-vite-node:  #feel free to use: docker compose logs node
+    container_name: vue-vite-node
+    image: vue-vite-node
     build:  
           context: .
           dockerfile: ./docker/node/Dockerfile    
