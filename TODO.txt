@@ -20,3 +20,8 @@ export default defineConfig({
 "scripts": {
     "dev": "vite --host",
 ...
+
+
+================nginx=====================
+add nginx after node
+If node is ok => add nginx 

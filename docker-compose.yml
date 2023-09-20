@@ -4,8 +4,8 @@ services:
     container_name: vue-vite-node
     image: vue-vite-node
     build:  
-          context: .
-          dockerfile: ./docker/node/Dockerfile    
+      context: .
+      dockerfile: ./docker/node/Dockerfile    
     working_dir: /var/www/vue-vite   
     ports:
       - "5173:5173" #8000?   
@@ -13,8 +13,8 @@ services:
       - .:/var/www/vue-vite
     tty: true #pseudo-terminal
     networks:
-            - vue-vite-network
+      - vue-vite-network
 
 networks:
-    vue-vite-network:
-        driver: bridge
+  vue-vite-network:
+    driver: bridge
