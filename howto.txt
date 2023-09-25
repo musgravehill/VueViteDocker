@@ -2,18 +2,34 @@
 in docker/node/Dockerfile disable run npm:
 # CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
 
-docker compose up 
-attach shell:
-        npm create vite@latest
-        --select what you need
-        --then
-        cd *your project folder*
+SELECT 1 or 2
+        1. after clone from repo
+        docker compose up 
+        attach shell vvd-vite:
         npm install
-        --npm suggests you run: npm run dev 
-        --but dont do it. See at Dockerfile CMD [npm run dev -- --host 0000]
 
-in docker/node/Dockerfile ENABLE run npm:
-CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
+        docker compose down
+        in docker/node/Dockerfile ENABLE run npm:
+        CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
+
+
+        2. for init brand new 
+        docker compose up 
+        attach shell vvd-vite:
+                npm create vite@latest
+                --select what you need
+                --then
+                cd *your project folder*
+                npm install
+                --npm suggests you run: npm run dev 
+                --but dont do it. See at Dockerfile CMD [npm run dev -- --host 0000]
+
+        docker compose down
+        in docker/node/Dockerfile ENABLE run npm:
+        CMD [ "npm", "run", "dev", "--", "--host", "0.0.0.0" ]
+
+
+docker compose up 
 
 Then you can use:  
         cd /var/www/vvd-vite
