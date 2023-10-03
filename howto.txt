@@ -32,7 +32,7 @@ SELECT 1 or 2
 docker compose up 
 
 Then you can use:  
-        cd /var/www/vvd-vite
+        cd /var/www/vvd-vite && npx vite build  
         npx vite --help 
         npx vite build  
 
