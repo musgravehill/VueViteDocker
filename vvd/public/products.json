@@ -1,0 +1,34 @@
+[
+    {
+        "productId": "fe4d67b5-3ccb-4bb1-9b85-634c8badaa15",
+        "productName": "Fishing reel for big game",
+        "options": [
+            {
+                "optionId": "8c6de7c9-542d-4ada-ab10-68a4446f9548",
+                "colorName": "gold",
+                "imgUrl": "/product/1-gold.png"
+            },
+            {
+                "optionId": "dc50f6d1-9c5a-4542-a92a-5686eb6c7a11",
+                "colorName": "green",
+                "imgUrl": "/product/1-green.png"
+            }
+        ]
+    },
+    {
+        "productId": "224d67b5-3ccb-4bb1-9b85-634c8badaa15",
+        "productName": "Fishing fly reel",
+        "options": [
+            {
+                "optionId": "226de7c9-542d-4ada-ab10-68a4446f9548",
+                "colorName": "red",
+                "imgUrl": "/product/2-red.png"
+            },
+            {
+                "optionId": "2250f6d1-9c5a-4542-a92a-5686eb6c7a11",
+                "colorName": "green",
+                "imgUrl": "/product/2-green.png"
+            }
+        ]
+    }
+]

@@ -4,40 +4,50 @@ import { ref, computed, defineProps } from 'vue'
 const props = defineProps({
     id: String,
     name: String,
-    productOptions: Array,
+    options: Array,
 })
 
-const modelProductOption = ref(props.productOptions[0].optionId)
+const modelOptionId = ref(props.options[0].optionId)
 const imgUrl = computed(() =>
-    props.productOptions.find((option) => option.optionId == modelProductOption.value).imgUrl
+    props.options.find((option) => option.optionId == modelOptionId.value).imgUrl
 )
 
 </script>
 
 <template>
-    <h1>
-        {{ name }}
-    </h1>
+    <div class="product-wrapper">
+        <h1>
+            {{ name }}
+        </h1>
 
-    <img :src="imgUrl" :alt="name" class="product-img">
+        <img :src="imgUrl" :alt="name" class="product-img">
 
-    <span v-for="productOption in productOptions" :key="productOption.optionId" class="product-radio">
-        <input type="radio" :id="productOption.optionId" :value="productOption.optionId" v-model="modelProductOption" />
-        <label :for="productOption.optionId">{{ productOption.colorName }}</label>
-    </span>
+        <span v-for="option in options" :key="option.optionId" class="product-radio">
+            <input type="radio" :id="option.optionId" :value="option.optionId" v-model="modelOptionId" />
+            <label :for="option.optionId">{{ option.colorName }}</label>
+        </span>
 
-    <br><br><br>
-    Selected optionId: {{ modelProductOption }}
+        <br><br><br>
+        Selected optionId: {{ modelOptionId }}
 
-    <!-- 
-    v-for="({ optionId, colorName }, idx) in productOptionColors"
+        <!-- 
+    v-for="({ optionId, colorName }, idx) in optionColors"
     :checked="idx === 0 ? true : false"
     -->
+    </div>
 </template>
 
 <style scoped>
+.product-wrapper {
+    box-shadow: 6px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 6px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 6px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 5px;
+}
+
 .product-img {
-    max-height: 256px;
+    height: 256px;
     max-width: 256px;
 }
 
