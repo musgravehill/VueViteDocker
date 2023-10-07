@@ -14,8 +14,8 @@ const imgUrl = computed(() =>
     props.options.find((option) => option.optionId == modelOptionId.value).imgUrl
 )
 
-function addToCart(){
-    emit('eventAddToCart', { id: props.id, optionId:modelOptionId.value })
+function addToCart() {
+    emit('eventAddToCart', { id: props.id, optionId: modelOptionId.value })
 }
 
 </script>
@@ -33,7 +33,7 @@ function addToCart(){
             <label :for="option.optionId">{{ option.colorName }}</label>
         </span>
 
-        <button @click="addToCart">Add to cart</button> 
+        <button @click="addToCart">Add to cart</button>
 
         <br><br><br>
         Selected optionId: {{ modelOptionId }}
