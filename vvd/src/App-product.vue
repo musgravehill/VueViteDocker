@@ -9,16 +9,26 @@ async function fetchProducts() {
   products.value = await responce.json()
 }
 
-onMounted(() => { fetchProducts() })
+onMounted(() => { 
+  fetchProducts() 
+})
+
+function onEventAddToCart(payload){
+ console.log(payload)
+}
 
 </script>
 
 <template>
-  <div style="display:flex">
+  <div class="products">
     <div v-for="product in products">
-      <Product :id="product.productId" :name="product.productName" :options="product.options"></Product>
+      <Product @EventAddToCart="onEventAddToCart" :id="product.productId" :name="product.productName" :options="product.options"></Product>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.products{
+  display:flex;
+}
+</style>

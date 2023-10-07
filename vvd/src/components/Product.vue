@@ -7,10 +7,16 @@ const props = defineProps({
     options: Array,
 })
 
+const emit = defineEmits(['eventAddToCart'])
+
 const modelOptionId = ref(props.options[0].optionId)
 const imgUrl = computed(() =>
     props.options.find((option) => option.optionId == modelOptionId.value).imgUrl
 )
+
+function addToCart(){
+    emit('eventAddToCart', { id: props.id, optionId:modelOptionId.value })
+}
 
 </script>
 
@@ -26,6 +32,8 @@ const imgUrl = computed(() =>
             <input type="radio" :id="option.optionId" :value="option.optionId" v-model="modelOptionId" />
             <label :for="option.optionId">{{ option.colorName }}</label>
         </span>
+
+        <button @click="addToCart">Add to cart</button> 
 
         <br><br><br>
         Selected optionId: {{ modelOptionId }}
