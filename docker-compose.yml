@@ -25,9 +25,11 @@ services:
     image: nginx:1.23-alpine
     ports:
       - "80:80"
+      - '443:443'
     volumes:
       - ./vvd/dist:${ENV_FRONTEND_WORKDIR}:rw
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/nginx/ssl:/etc/nginx/ssl
     entrypoint: [ "nginx-debug", "-g", "daemon off;" ]
     networks:
       - vvd-network
