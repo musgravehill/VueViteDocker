@@ -46,9 +46,52 @@
         http://localhost:5173  - see reactive live site 
 
 ## SSL
-        sudo openssl req -x509 -nodes -days 2365 -newkey rsa:2048 -keyout /home/eva/DEV/www/VueViteDocker/docker/nginx/ssl/nginx-selfsigned.key -out /home/eva/DEV/www/VueViteDocker/docker/nginx/ssl/nginx-selfsigned.crt
+        FQDN: vvd.ru  
 
-        FQDN: vvd.ru   
+        === Generate the root certificate ===
+
+        Much better to use /usr/local/share/ca-certificates, 
+        so you don't interfere with the package manager. /usr/local was specially reserved for this purpose. 
+        https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s09.html
+
+        cd /home/eva/DEV/cert
+        sudo openssl req -x509 -nodes -days 2365 -newkey rsa:2048 -keyout myCA.key -out myCA.crt
+        sudo cp myCA.crt /usr/local/share/ca-certificates/
+        sudo update-ca-certificates  
+
+        === Domain certificate ===
+
+        cd /home/eva/DEV/cert
+
+        sudo openssl genrsa -out vvd.ru.key 2048
+        sudo openssl req -new -key vvd.ru.key -out vvd.ru.csr
+
+        Create file vvd.ru.ext with:
+        authorityKeyIdentifier=keyid,issuer
+        basicConstraints=CA:FALSE
+        keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+        subjectAltName = @alt_names
+        [alt_names]
+        DNS.1 = vvd.ru
+
+        sudo openssl x509 -req -in vvd.ru.csr -CA myCA.crt -CAkey myCA.key -CAcreateserial \
+        -out vvd.ru.crt -days 2365 -sha256 -extfile vvd.ru.ext
+
+        === Chrome ===
+
+        chrome://settings/certificates
+        Import myCA.crt to "Сertification centers Certification authority CA" 
+
+
+         
+
+        
+         
+
+        
+
+        
+ 
 
 
 
